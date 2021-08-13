@@ -1,6 +1,7 @@
-name: black-action
+name: basic-python-workflow
 on: [push, pull_request]
 jobs:
+
   linter_name:
     name: runner / black formatter
     runs-on: ubuntu-latest
@@ -10,3 +11,14 @@ jobs:
         with:
           black_args: ". --check -l 79 -S"
 
+  test:
+    name: Test the code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing pytest
+        run: |
+          pip install pytest
+      - name: Running tests
+        run: |
+          pytest
