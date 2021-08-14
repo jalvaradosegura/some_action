@@ -1,4 +1,5 @@
 from collections import namedtuple
+from typing import NamedTuple
 
 Car = namedtuple('Car', ['color', 'mileage'])
 
@@ -16,3 +17,19 @@ print(my_car.color)
 
 ElitricCar = namedtuple('ElectricCar', Car._fields + ('charge',))
 print(ElitricCar('blue', 12, 99))
+
+print()
+# from typing import NamedTuple
+
+
+class Dog(NamedTuple):
+    name: str
+    breed: str
+    age: int
+
+
+# I love him
+zendo = Dog('Zendo', 'Pembroke Corgi', 7)
+print(zendo)
+# Will fail, NamedTuple's are inmutable
+# zendo.legs = 4
