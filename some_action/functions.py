@@ -8,4 +8,5 @@ print(bark('Woof'))
 del yell
 print(bark('Woof'))
 print(bark.__name__)
-print(yell('Im yelling'))
+# will fail because the fx got deleted
+# print(yell('Im yelling'))
