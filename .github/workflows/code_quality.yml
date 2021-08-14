@@ -31,4 +31,6 @@ jobs:
       - name: isort validation
         run: |
           poetry run python -m isort . --check-only
-
+      - name: black validation
+        run: |
+          poetry run python -m black . -l 79 -S --check
