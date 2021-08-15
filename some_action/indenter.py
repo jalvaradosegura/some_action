@@ -10,7 +10,7 @@ class Indenter:
         self.level -= 1
 
     def print(self, text):
-        print(' ' * self.level + text)
+        print('    ' * self.level + text)
 
 
 with Indenter() as indenter:
@@ -19,4 +19,4 @@ with Indenter() as indenter:
         indenter.print('Im deeper')
         with indenter:
             indenter.print("I'm even deeper")
-        indenter.print('go back by 1')
+    indenter.print('go back to 0')
