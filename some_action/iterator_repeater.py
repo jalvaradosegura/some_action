@@ -49,3 +49,79 @@ while True:
     except StopIteration:
         break
     print(item)
+
+
+# Let's use generators to create our iterators
+def repeater(value):
+    while True:
+        yield value
+
+
+# Infinite loop
+# for x in repeater('Hi'):
+#    print(x)
+
+
+def repeat_three_times(value):
+    yield value
+    yield value
+    yield value
+
+
+for x in repeat_three_times('3 times'):
+    print(x)
+
+iterator = repeat_three_times('3 times called by next')
+next(iterator)
+next(iterator)
+next(iterator)
+# Will raise StopIteration
+# next(iterator)
+
+
+def bounded_repeater(value, max_repeats):
+    for i in range(max_repeats):
+        yield value
+
+
+for x in bounded_repeater('cool repeater', 2):
+    print(x)
+
+
+# Now let's use generator expressions
+for x in ('Bom dia' for i in range(3)):
+    print(x)
+
+
+print(sum(x * 2 for x in range(10)))
+iterator = ('generator expression' for x in range(3))
+for x in iterator:
+    print(x)
+
+
+# Iterator chain
+def integers():
+    for i in range(1, 9):
+        yield i
+
+
+def squared(seq):
+    for i in seq:
+        yield i * i
+
+
+def negated(seq):
+    for i in seq:
+        yield -1 * i
+
+
+chain = negated(squared(integers()))
+print(list(chain))
+
+
+# another way of doing the chain
+print('\n another way of doing the same')
+integers = range(1, 9)
+squared = (x * x for x in integers)
+negated = (x * -1 for x in squared)
+print(list(negated))
